@@ -1,8 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/prop-types */
-import cart from "../../images/cart.svg";
-import "./Cart.css";
+import { useMemo } from "react";
+import { useAppContext } from "../../context/appContext";
+import CartIcon from "../../images/cart.svg?react";
 import CartItem from "./CartItem";
+import "./Cart.css";
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
   style: "currency",
@@ -10,40 +12,51 @@ const formatCurrency = new Intl.NumberFormat(undefined, {
 });
 
 function Cart({
-  state,
   isOpen,
   handleClose,
-  removeItem,
-  updateItem,
-  clearCart,
 }) {
+  const {cartState, removeItemFromCart, updateItemQuantityById, handleCartClear} = useAppContext();
   const purchaseHandler = () => {
-    clearCart();
+    handleCartClear();
 
     setTimeout(() => {
       alert("Thank you for your purchase!");
     });
   };
 
-  const cartTotalPrice = state.reduce(
+  const cartTotalPrice = useMemo(() => cartState.reduce(
     (acc, { price, quantity }) => price * quantity + acc,
     0
-  );
+  ), [cartState]);
+
+  const renderCartItems = () => {
+    return cartState.map((item) => (
+      <CartItem
+        key={item.id}
+        {...item}
+        updateItem={updateItemQuantityById}
+        removeItem={removeItemFromCart}
+      />
+    ));
+  };
 
   if (!isOpen) return null;
 
-  if (state.length === 0) {
+  if (cartState.length === 0) {
     return (
       <div className="cart__container">
         <div className="cart__buttons">
-          <button className="purchase__button" disabled>
+          <button className="cart__button" disabled>
             Purchase
           </button>
-          <button className="close__button" onClick={handleClose}>
+          <button className="cart__button" onClick={handleClose}>
             X
           </button>
         </div>
-        <img src={cart} alt="cart" width="40" />
+        <div className="cart-icon">
+          <CartIcon />
+        </div>
+
         <span>Cart empty...</span>
       </div>
     );
@@ -52,23 +65,14 @@ function Cart({
   return (
     <div className="cart__container">
       <div className="cart__buttons">
-        <button className="purchase__button" onClick={purchaseHandler}>
+        <button className="cart__button" onClick={purchaseHandler}>
           Purchase
         </button>
-        <button className="close__button" onClick={handleClose}>
+        <button className="cart__button" onClick={handleClose}>
           X
         </button>
       </div>
-      <ul className="cart__item-list">
-        {state.map((item) => (
-          <CartItem
-            key={item.id}
-            {...item}
-            updateItem={updateItem}
-            removeItem={removeItem}
-          />
-        ))}
-      </ul>
+      <ul className="cart__item-list">{renderCartItems()}</ul>
       <span className="total">
         Total price: {formatCurrency.format(cartTotalPrice)}
       </span>

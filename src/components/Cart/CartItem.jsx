@@ -1,15 +1,18 @@
 /* eslint-disable react/prop-types */
 import trash from "../../images/trash.png";
+import { MAX_QUANTITY, MIN_QUANTITY } from "../../constants/constants";
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
   style: "currency",
   currency: "USD",
 });
 
-const MAX_QUANTITY = 31;
-const MIN_QUANTITY = 1;
-
 function CartItem({ id, quantity, title, price, updateItem, removeItem }) {
+  const handleChangeQuantity = (e) => {
+    const newQuantity = parseInt(e.target.value);
+    updateItem(id, newQuantity);
+  };
+
   return (
     <li key={id} className="cart__item">
       <div className="cart__item-info">
@@ -23,10 +26,7 @@ function CartItem({ id, quantity, title, price, updateItem, removeItem }) {
             value={quantity}
             min={MIN_QUANTITY}
             max={MAX_QUANTITY}
-            onChange={(e) => {
-              const newQuantity = parseInt(e.target.value)
-              updateItem(id, newQuantity)
-            }}
+            onChange={handleChangeQuantity}
           />
         </span>
         <span> Price: {formatCurrency.format(price)}</span>

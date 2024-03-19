@@ -8,7 +8,6 @@ ul {
   justify-content: space-between;
   align-items: flex-start;
   padding: 10px;
-  /* margin: 20px; */
   width: 400px;
   border: 2px solid #000;
 }
@@ -24,7 +23,6 @@ ul {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 .item__wish-button,

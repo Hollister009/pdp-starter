@@ -4,11 +4,9 @@ import { useState } from "react";
 import cart from "../../images/cart.svg";
 import heart from "../../images/heart.svg";
 import heartFilled from "../../images/heart-black.svg";
+import { MAX_QUANTITY, MIN_QUANTITY } from "../../constants/constants";
 
 import "./Item.css";
-
-export const MAX_QUANTITY = 31;
-export const MIN_QUANTITY = 1;
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
   style: "currency",

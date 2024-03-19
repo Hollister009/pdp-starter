@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from 'react';
-
+/* eslint-disable react/prop-types */
+import { createContext, useContext, useState } from "react";
 
 const AppContext = createContext();
 
@@ -11,49 +11,67 @@ export const useAppContext = () => {
   }
 
   return context;
-}
+};
 
 const AppContextProvider = ({ children }) => {
-  const [cartData, setCart] = useState([]);
+  const [cartState, setCartState] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
 
-  /**
-   * @param {{ id: number, quantity: number, title: string, description: string, price: number, category: string }} itemData 
-   */
-  const addToCart = (itemData) => {
-    const itemIndex = cartData.findIndex(data => data.id === itemData.id);
+  const updateItemQuantityById = (id, quantity) => {
+    const currentItemIndex = cartState.findIndex((item) => item.id === id);
+    const copyCartState = [...cartState];
+    const currentItem = copyCartState[currentItemIndex];
+    copyCartState[currentItemIndex] = { ...currentItem, quantity };
 
-    if (itemIndex !== -1) {
-      const newData = [...cartData];
-      const { quantity: oldQuantity } = newData[itemIndex];
-      newData[itemIndex] = {...newData[itemIndex], quantity: oldQuantity + itemData.quantity };
+    setCartState(copyCartState);
+  };
 
-      setCart(newData);
+  const addItemToCart = (item) => {
+    const cartItem = cartState.find(({ id }) => id === item.id);
+
+    if (cartItem) {
+      const newQuantity = cartItem.quantity + item.quantity;
+      updateItemQuantityById(item.id, newQuantity);
     } else {
-      const oldCart = [...cartData];
-      const newCart = oldCart.concat(itemData);
-
-      setCart(newCart);
+      setCartState([...cartState, item]);
     }
   };
 
-  /**
-   * @param {number} id 
-   */
-  const removeFromCart = (id) => {
-    const newCart = cartData.filter((itemData) => itemData.id !== id);
-
-    setCart(newCart);
+  const removeItemFromCart = (id) => {
+    setCartState(cartState.filter((item) => item.id !== id));
   };
 
-  const clearCart = () => {
-    setCart([]);
-  }
+  const handleCartClear = () => {
+    setCartState([]);
+  };
+
+  const toggleWishlistById = (id) => {
+    const isItemInWishlist = wishlist.includes(id);
+
+    if (isItemInWishlist) {
+      setWishlist(wishlist.filter((itemId) => itemId !== id));
+    } else {
+      setWishlist([...wishlist, id]);
+    }
+  };
 
   return (
-    <AppContext.Provider value={{ cartData, addToCart, removeFromCart, clearCart }}>
+    <AppContext.Provider
+      value={{
+        cartState,
+        setCartState,
+        wishlist,
+        setWishlist,
+        addItemToCart,
+        handleCartClear,
+        removeItemFromCart,
+        toggleWishlistById,
+        updateItemQuantityById
+      }}
+    >
       {children}
     </AppContext.Provider>
-  )
-}
+  );
+};
 
 export default AppContextProvider;
