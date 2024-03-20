@@ -56,7 +56,6 @@ function Cart({
         <div className="cart-icon">
           <CartIcon />
         </div>
-
         <span>Cart empty...</span>
       </div>
     );

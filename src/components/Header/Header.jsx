@@ -21,7 +21,7 @@ function Header({ handleCartOpen }) {
         <div className="wish__list">
           <button>
             <Counter count={wishlist.length} />
-            <img src={heart} alt="cart" width="20" />
+            <img src={heart} alt="heart" width="20" />
           </button>
           <span>Обране</span>
         </div>

@@ -51,15 +51,15 @@ function Item({
       </ul>
       <div className="item__buttons">
         <button
-          className="item__wish-button"
+          className="item__button"
           onClick={() => toggleWishlistById(item.id)}
         >
           {isWishlisted ? "Remove from " : "Add to "}
-          <img src={isWishlisted ? heartFilled : heart} alt="cart" width="15" />
+          <img src={isWishlisted ? heartFilled : heart} alt="heart" width="15" />
         </button>
 
         <button
-          className="item__cart-button"
+          className="item__button"
           onClick={() => addItemToCart({ ...item, quantity })}
         >
           Add to <img src={cart} alt="cart" width="15" />
