@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
-import { useAppContext } from "../../context/appContext";
-import Item from "../Item/Item";
-import "./ItemList.css";
+import { useAppContext } from '../../context/appContext';
+import Item from '../Item/Item';
+import './ItemList.css';
 
 function ItemList({ data = [] }) {
   const { wishlist, addItemToCart, toggleWishlistById } = useAppContext();

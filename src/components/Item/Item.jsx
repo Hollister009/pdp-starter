@@ -1,23 +1,21 @@
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable react/prop-types */
-import { useState } from "react";
-import cart from "../../images/cart.svg";
-import heart from "../../images/heart.svg";
-import heartFilled from "../../images/heart-black.svg";
-import { MAX_QUANTITY, MIN_QUANTITY } from "../../constants/constants";
+import { useState } from 'react';
+import cart from '../../images/cart.svg';
+import heart from '../../images/heart.svg';
+import heartFilled from '../../images/heart-black.svg';
+import { MAX_QUANTITY, MIN_QUANTITY } from '../../constants/constants';
 
-import "./Item.css";
+import './Item.css';
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
-  style: "currency",
-  currency: "USD",
+  style: 'currency',
+  currency: 'USD'
 });
 
 function Item({
   item,
   addItemToCart,
   toggleWishlistById,
-  isWishlisted = false,
+  isWishlisted = false
 }) {
   const { title, description, price, category } = item;
   const [quantity, setQuantity] = useState(1);
@@ -54,8 +52,12 @@ function Item({
           className="item__button"
           onClick={() => toggleWishlistById(item.id)}
         >
-          {isWishlisted ? "Remove from " : "Add to "}
-          <img src={isWishlisted ? heartFilled : heart} alt="heart" width="15" />
+          {isWishlisted ? 'Remove from ' : 'Add to '}
+          <img
+            src={isWishlisted ? heartFilled : heart}
+            alt="heart"
+            width="15"
+          />
         </button>
 
         <button

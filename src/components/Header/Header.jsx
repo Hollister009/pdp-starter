@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
-import { useMemo } from "react";
-import { useAppContext } from "../../context/appContext";
-import cart from "../../images/cart.svg";
-import heart from "../../images/heart.svg";
-import Counter from "../Counter/Counter";
+import { useMemo } from 'react';
+import { useAppContext } from '../../context/appContext';
+import cart from '../../images/cart.svg';
+import heart from '../../images/heart.svg';
+import Counter from '../Counter/Counter';
 
-import "./Header.css";
+import './Header.css';
 
 function Header({ handleCartOpen }) {
   const { wishlist, cartState } = useAppContext();

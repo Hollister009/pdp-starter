@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
-import trash from "../../images/trash.png";
-import { MAX_QUANTITY, MIN_QUANTITY } from "../../constants/constants";
+import trash from '../../images/trash.png';
+import { MAX_QUANTITY, MIN_QUANTITY } from '../../constants/constants';
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
-  style: "currency",
-  currency: "USD",
+  style: 'currency',
+  currency: 'USD'
 });
 
 function CartItem({ id, quantity, title, price, updateItem, removeItem }) {

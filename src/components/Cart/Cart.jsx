@@ -1,33 +1,34 @@
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/prop-types */
-import { useMemo } from "react";
-import { useAppContext } from "../../context/appContext";
-import CartIcon from "../../images/cart.svg?react";
-import CartItem from "./CartItem";
-import "./Cart.css";
+import { useMemo } from 'react';
+import { useAppContext } from '../../context/appContext';
+import CartIcon from '../../images/cart.svg?react';
+import CartItem from './CartItem';
+import './Cart.css';
 
 const formatCurrency = new Intl.NumberFormat(undefined, {
-  style: "currency",
-  currency: "USD",
+  style: 'currency',
+  currency: 'USD'
 });
 
-function Cart({
-  isOpen,
-  handleClose,
-}) {
-  const {cartState, removeItemFromCart, updateItemQuantityById, handleCartClear} = useAppContext();
+function Cart({ isOpen, handleClose }) {
+  const {
+    cartState,
+    removeItemFromCart,
+    updateItemQuantityById,
+    handleCartClear
+  } = useAppContext();
   const purchaseHandler = () => {
     handleCartClear();
 
     setTimeout(() => {
-      alert("Thank you for your purchase!");
+      alert('Thank you for your purchase!');
     });
   };
 
-  const cartTotalPrice = useMemo(() => cartState.reduce(
-    (acc, { price, quantity }) => price * quantity + acc,
-    0
-  ), [cartState]);
+  const cartTotalPrice = useMemo(
+    () =>
+      cartState.reduce((acc, { price, quantity }) => price * quantity + acc, 0),
+    [cartState]
+  );
 
   const renderCartItems = () => {
     return cartState.map((item) => (
