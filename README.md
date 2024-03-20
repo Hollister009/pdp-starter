@@ -1,47 +1,35 @@
-# PDP Starter
+# pdp-starter
 
+This template should help get you started developing with Vue 3 in Vite.
 
-## Exercise 1:
+## Recommended IDE Setup
 
-### Create the PDP (Product Details Page) with the following criteria.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-Given: A webpage displaying products.
+## Customize configuration
 
-User Story:
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-    Overview:
-        As a user, I wish to interact with a webpage that prominently features:
-            Product Item Card: Displaying the title, description, price, and category of each product.
-            Grid Layout: Showcasing a collection of product item cards, specifically displaying 9 items at a time.
-            Header Section: Including icons for Wishlist and Cart functionalities.
+## Project Setup
 
-    Product Item Card Details:
-        Each product item card must include a field to select the desired quantity for purchase.
-        Two buttons should be present:
-            Wishlist Button: Toggles the addition or removal of the item from the wishlist.
-            Add to Cart Button: Adds the specified quantity of the item to the shopping cart.
+```sh
+npm install
+```
 
-    Wishlist Functionality:
-        The Wishlist icon in the header should display a counter indicating the total number of items added to the wishlist.
+### Compile and Hot-Reload for Development
 
-    Cart Functionality:
-        The Cart icon in the header should show a counter reflecting the total quantity of items added to the cart.
-        Interacting with the Cart icon should reveal a panel or dropdown list on the right side, detailing:
-            The ability to adjust the quantity of each item in the cart.
-            Options to remove any item from the cart.
-            The total cost of the order, dynamically updated to mirror changes in the cart.
-        Upon finalizing the selection and clicking the "Order" button, the cart should empty, and a confirmation message should appear to notify the user of a successful purchase.
+```sh
+npm run dev
+```
 
-The example of Header icons:
+### Compile and Minify for Production
 
-![Alt text](docs/image.png)
+```sh
+npm run build
+```
 
-## Data structure:
-```ts
-type Item = {
-  title: string,
-  description: string,
-  price: number,
-  category: string
-}
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
 ```
