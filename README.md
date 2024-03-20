@@ -1,6 +1,5 @@
 # PDP Starter
 
-
 ## Exercise 1:
 
 ### Create the PDP (Product Details Page) with the following criteria.
@@ -37,11 +36,12 @@ The example of Header icons:
 ![Alt text](docs/image.png)
 
 ## Data structure:
+
 ```ts
 type Item = {
-  title: string,
-  description: string,
-  price: number,
-  category: string
-}
+  title: string;
+  description: string;
+  price: number;
+  category: string;
+};
 ```
