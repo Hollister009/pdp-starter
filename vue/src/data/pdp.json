@@ -1,0 +1,65 @@
+[
+  {
+    "id": 123456,
+    "title": "Eco-Friendly Water Bottle",
+    "description": "A durable, BPA-free water bottle made from sustainable materials.",
+    "price": 15.99,
+    "category": "Home & Kitchen"
+  },
+  {
+    "id": 234785,
+    "title": "Wireless Bluetooth Headphones",
+    "description": "High-quality sound with noise cancellation and long battery life.",
+    "price": 89.99,
+    "category": "Electronics"
+  },
+  {
+    "id": 345678,
+    "title": "Organic Cotton T-Shirt",
+    "description": "Soft, sustainable, and ethically produced cotton t-shirt.",
+    "price": 29.99,
+    "category": "Apparel"
+  },
+  {
+    "id": 456789,
+    "title": "Vegan Leather Backpack",
+    "description": "Stylish and durable backpack made from high-quality vegan leather.",
+    "price": 74.99,
+    "category": "Accessories"
+  },
+  {
+    "id": 567489,
+    "title": "Smart Home Thermostat",
+    "description": "Energy-efficient thermostat that can be controlled remotely via an app.",
+    "price": 199.99,
+    "category": "Home Improvement"
+  },
+  {
+    "id": 678945,
+    "title": "Natural Skin Care Set",
+    "description": "A set of organic, cruelty-free skincare products for all skin types.",
+    "price": 59.99,
+    "category": "Beauty"
+  },
+  {
+    "id": 789456,
+    "title": "Stainless Steel Cookware Set",
+    "description": "High-quality, durable cookware set for the modern kitchen.",
+    "price": 299.99,
+    "category": "Home & Kitchen"
+  },
+  {
+    "id": 897456,
+    "title": "Biodegradable Phone Case",
+    "description": "Eco-friendly, durable phone case made from biodegradable materials.",
+    "price": 19.99,
+    "category": "Electronics Accessories"
+  },
+  {
+    "id": 987654,
+    "title": "Yoga Mat with Alignment Lines",
+    "description": "Non-slip, eco-friendly yoga mat with alignment lines for proper posture.",
+    "price": 39.99,
+    "category": "Fitness"
+  }
+]
